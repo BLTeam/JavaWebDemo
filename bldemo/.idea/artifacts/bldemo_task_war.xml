@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="bldemo-task:war">
-    <output-path>$PROJECT_DIR$/bldemo-task/target</output-path>
-    <root id="archive" name="bldemo-task.war">
-      <element id="artifact" artifact-name="bldemo-task:war exploded" />
-    </root>
-  </artifact>
-</component>
