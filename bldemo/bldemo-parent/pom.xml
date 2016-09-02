@@ -10,6 +10,7 @@
     </parent>
     <artifactId>bldemo-parent</artifactId>
     <name>bldemo-parent</name>
+    <packaging>pom</packaging>
 
     <properties>
 
