@@ -279,9 +279,6 @@
                 <includes>
                     <include>**/*.xml</include>
                     <include>**/*.properties</include>
-                    <include>**/*.keytab</include>
-                    <include>**/*.jpg</include>
-                    <include>**/*.zip</include>
                 </includes>
             </testResource>
         </testResources>
@@ -292,7 +289,6 @@
                 <includes>
                     <include>**/*.xml</include>
                     <include>**/*.properties</include>
-                    <include>**/*.keytab</include>
                 </includes>
             </resource>
         </resources>
@@ -308,6 +304,40 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <profile.env.name>env.dev.properties</profile.env.name>
+                <env>dev</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.env.name>env.test.properties</profile.env.name>
+                <env>dev</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>product</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <profile.env.name>env.product.properties</profile.env.name>
+                <env>prod</env>
+            </properties>
+        </profile>
+
+    </profiles>
 
 
 </project>
