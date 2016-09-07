@@ -1,5 +1,6 @@
 package com.bl.bldemo.api.controller;
 
+import com.bl.bldemo.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,9 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @Controller
 public class DemoController {
 
+    @Autowired
+    DemoService demoService;
+
     @RequestMapping(value = { "/hello" }, method = { GET, POST })
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
@@ -25,7 +29,7 @@ public class DemoController {
                          @RequestParam(value = "name", defaultValue = "") String name,
                          HttpServletRequest request) {
 
-        return "hello world: " + id + " " + " name:" + name;
+        return "hello world: " + id + " " + " name:" + demoService.getTestData();
     }
 
 }
