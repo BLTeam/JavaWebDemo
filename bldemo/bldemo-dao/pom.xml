@@ -13,6 +13,7 @@
 
     <artifactId>bldemo-dao</artifactId>
     <name>bldemo-dao</name>
+    <packaging>jar</packaging>
 
     <dependencies>
         <!-- apache commons begin -->
@@ -52,6 +53,10 @@
         <dependency>
             <groupId>commons-configuration</groupId>
             <artifactId>commons-configuration</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
         </dependency>
         <!-- apache commons end -->
 
@@ -116,6 +121,13 @@
         </dependency>
         <!-- spring end -->
 
+        <!-- mysql start -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!-- mysql end -->
+
         <!-- mybatis begin -->
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -158,4 +170,33 @@
         </dependency>
         <!-- testing end -->
     </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <configuration>
+                    <overwrite>true</overwrite>
+                    <verbose>true</verbose>
+                    <configurationFile>src/main/resources/generatorConfig.xml</configurationFile>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.bl</groupId>
+                        <artifactId>bldemo-dao</artifactId>
+                        <version>${bl.bldemo.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

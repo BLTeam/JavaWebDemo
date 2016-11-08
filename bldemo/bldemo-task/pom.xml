@@ -16,6 +16,17 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.bl</groupId>
+            <artifactId>bldemo-common</artifactId>
+            <version>${bl.bldemo.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bl</groupId>
+            <artifactId>bldemo-service</artifactId>
+            <version>${bl.bldemo.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>

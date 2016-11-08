@@ -15,7 +15,7 @@
     <properties>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<!--        <skipTests>true</skipTests>-->
+        <!--        <skipTests>true</skipTests>-->
         <!-- jdk -->
         <jdk.version>1.7</jdk.version>
         <!-- maven -->
@@ -33,11 +33,17 @@
         <commons-io>1.3.2</commons-io>
         <commons-beanutils>1.8.3</commons-beanutils>
         <commons-configuration>1.6</commons-configuration>
+        <commons-logging>1.1.1</commons-logging>
+        <common-dbcp>1.4</common-dbcp>
         <!-- log -->
         <slf4j.version>1.7.7</slf4j.version>
         <log4j.version>1.2.16</log4j.version>
         <!-- spring -->
         <spring.version>3.2.9.RELEASE</spring.version>
+        <!-- guava -->
+        <guava.version>18.0</guava.version>
+        <!-- mysql -->
+        <mysql.version>5.1.21</mysql.version>
         <!-- mybatis -->
         <mybatis.version>3.2.6</mybatis.version>
         <mybatis.spring.version>1.2.2</mybatis.spring.version>
@@ -48,7 +54,8 @@
         <!-- httpclient -->
         <httpclient.version>4.3.3</httpclient.version>
         <!-- json -->
-        <jackson.version>2.6.2</jackson.version>
+        <jackson.version>1.9.4</jackson.version>
+        <jackson.core.version>2.6.2</jackson.core.version>
         <fastjson.version>1.2.7</fastjson.version>
         <!-- test -->
         <junit.version>4.10</junit.version>
@@ -103,6 +110,16 @@
                 <groupId>commons-configuration</groupId>
                 <artifactId>commons-configuration</artifactId>
                 <version>${commons-configuration}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${commons-logging}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-dbcp</groupId>
+                <artifactId>commons-dbcp</artifactId>
+                <version>${common-dbcp}</version>
             </dependency>
             <!-- apache commons end -->
 
@@ -179,6 +196,22 @@
             </dependency>
             <!-- spring end -->
 
+            <!-- guava start -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <!-- guava end -->
+
+            <!-- mysql start -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <!-- mysql end -->
+
             <!-- mybatis begin -->
             <dependency>
                 <groupId>org.mybatis</groupId>
@@ -236,19 +269,24 @@
 
             <!-- json begin -->
             <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-mapper-asl</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-core</artifactId>
-                <version>${jackson.version}</version>
+                <version>${jackson.core.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
-                <version>${jackson.version}</version>
+                <version>${jackson.core.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-annotations</artifactId>
-                <version>${jackson.version}</version>
+                <version>${jackson.core.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -323,7 +361,7 @@
             </activation>
             <properties>
                 <profile.env.name>env.test.properties</profile.env.name>
-                <env>dev</env>
+                <env>test</env>
             </properties>
         </profile>
         <profile>
@@ -332,7 +370,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <profile.env.name>env.product.properties</profile.env.name>
+                <profile.env.name>env.prod.properties</profile.env.name>
                 <env>prod</env>
             </properties>
         </profile>
